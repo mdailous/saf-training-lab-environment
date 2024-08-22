@@ -37,3 +37,13 @@ jobs:
       # double-check that we don't have any serious issues in our profile code
       - name: LINT - Run InSpec Check
         run: inspec check $PROFILE
+
+      # launch a container as the test target
+      - name: DEPLOY - Run a Docker container from nginx
+        run: docker run -dit --name nginx nginx:latest
+
+      # install dependencies on the container so that hardening will work
+      - name: DEPLOY - Install Python for our nginx container
+        run: |
+          docker exec nginx apt-get update -y
+          docker exec nginx apt-get install -y python3
