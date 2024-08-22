@@ -27,3 +27,6 @@ jobs:
 
       - name: CHECK - pwd
         run: pwd
+
+      - name: CHECK - Parent directory ls
+        run: cd ..; ls -l
