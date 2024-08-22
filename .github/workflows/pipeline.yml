@@ -22,15 +22,6 @@ jobs:
       - name: PREP - Install SAF CLI
         run: npm install -g @mitre/saf
 
-      # - name: CHECK - ls
-      #   run: ls -l
-
-      # - name: CHECK - pwd
-      #   run: pwd
-
-      # - name: CHECK - Parent directory ls
-      #   run: cd ..; ls -l
-
       - name: PREP - Check out this repository
         uses: actions/checkout@v3
 
@@ -47,3 +38,16 @@ jobs:
         run: |
           docker exec nginx apt-get update -y
           docker exec nginx apt-get install -y python3
+
+      # fetch the hardening role and requirements
+      - name: HARDEN - Fetch Ansible role
+        run: |
+          git clone --branch docker https://github.com/mitre/ansible-nginx-stigready-hardening.git || true
+          chmod 755 ansible-nginx-stigready-hardening
+
+      - name: HARDEN - Fetch Ansible requirements
+        run: ansible-galaxy install -r ansible-nginx-stigready-hardening/requirements.yml
+
+      # harden!
+      - name: HARDEN - Run Ansible hardening
+        run: ansible-playbook --inventory=nginx, --connection=docker ansible-nginx-stigready-hardening/hardening-playbook.yml
