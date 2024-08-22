@@ -19,5 +19,5 @@ jobs:
       - name: PREP - Install InSpec executable
         run: curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec -v 5
 
-      - name: PREP - Install profile
-        uses: actions/checkout@v3
+      # - name: PREP - Install profile
+      #   uses: actions/checkout@v3
