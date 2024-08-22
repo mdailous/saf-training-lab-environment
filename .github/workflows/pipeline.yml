@@ -74,3 +74,8 @@ jobs:
       - name: VERIFY - Display our results summary
         run: |
           saf view summary -i results/pipeline_run_attested.json
+
+      # check if the pipeline passes our defined threshold
+      - name: VERIFY - Ensure the scan meets our results threshold
+        run: |
+          saf validate threshold -i results/pipeline_run_attested.json -F threshold.yml
