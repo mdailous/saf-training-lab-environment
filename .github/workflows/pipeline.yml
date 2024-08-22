@@ -13,14 +13,17 @@ jobs:
       CHEF_LICENSE: accept
       PROFILE: my_nginx
     steps:
-      - name: Update ubuntu
-        run: sudo apt-get update -y
+      # - name: Update ubuntu
+      #   run: sudo apt-get update -y
 
-      - name: PREP - Install InSpec executable
-        run: curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec -v 5
+      # - name: PREP - Install InSpec executable
+      #   run: curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec -v 5
 
-      - name: PREP - Install SAF CLI
-        run: npm install -g @mitre/saf
+      # - name: PREP - Install SAF CLI
+      #   run: npm install -g @mitre/saf
 
-      - name: CHECK
+      - name: CHECK - ls
         run: ls -l
+
+      - name: CHECK - pwd
+        run: pwd
