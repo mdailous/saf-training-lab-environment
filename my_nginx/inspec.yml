@@ -24,7 +24,7 @@ inputs:
       - stream_ssl
       - mail_ssl
 
-  - name: nginx_conf 
+  - name: nginx_conf
     desc: Path to nginx.conf file
     type: String
     value: "/etc/nginx/nginx.conf"
@@ -32,5 +32,6 @@ inputs:
   - name: admin_users
     desc: The owner of the nxing.conf file
     type: Array
-    value: 
+    value:
       - admin
+      - root
