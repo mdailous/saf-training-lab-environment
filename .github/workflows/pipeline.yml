@@ -70,3 +70,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: results/pipeline_run_attested.json
+
+      - name: VERIFY - Display our results summary
+        run: |
+          saf view summary -i results/pipeline_run_attested.json
