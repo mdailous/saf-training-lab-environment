@@ -33,3 +33,7 @@ jobs:
 
       - name: PREP - Check out this repository
         uses: actions/checkout@v3
+
+      # double-check that we don't have any serious issues in our profile code
+      - name: LINT - Run InSpec Check
+        run: inspec check $PROFILE
